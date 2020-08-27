@@ -37,8 +37,10 @@ class _DSIPageState extends State<DSIPage> {
     'PARA VÉI!',
     'QUE DEDO NERVOSO!',
     'PRA QUE ISSO?!',
+    'DEIXA DE GRAÇA!',
   ];
   int _counter = 0;
+//  int _counter1=0;
 
   void _incrementCounter() {
     setState(() {
@@ -52,9 +54,19 @@ class _DSIPageState extends State<DSIPage> {
     });
   }
 
+  void _decrementCounter(){
+    setState(() {
+      _counter--;
+    });
+  }
+
   String _getCountText() {
     return 'Você clicou $_counter vezes no botão.';
   }
+
+//  String _getCountTextD(){
+//    return 'Você clicou $_counter1 vezes no botão de decremento.';
+//  }
 
   String _getWarningText() {
     String result = '';
@@ -103,9 +115,10 @@ class _DSIPageState extends State<DSIPage> {
               Spacer(),
               FlatButton(
                 onPressed: _resetCounter,
-                color: Colors.green,
+                color: Colors.deepOrangeAccent,
+                shape: new RoundedRectangleBorder(borderRadius: new BorderRadius.circular(30.0)),
                 child: Text(
-                  'Reset',
+                  'Resetar',
                   style: TextStyle(color: Colors.white, fontSize: 16.0),
                 ),
               )
@@ -113,17 +126,34 @@ class _DSIPageState extends State<DSIPage> {
           ),
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      floatingActionButton: Row(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: <Widget>[
+          FloatingActionButton(
+            onPressed: _incrementCounter,
+            tooltip: 'Increment',
+            backgroundColor: Colors.green,
+            child: Icon(Icons.add),
+          ),
+          SizedBox(
+            width: 3.0,
+          ),
+          FloatingActionButton(
+            onPressed: _decrementCounter,
+            tooltip: 'Decrement',
+            backgroundColor: Colors.red,
+            child: Icon(Icons.remove),
+          ),
+        ],
+      ),
+      // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
 
 class DSIMainBodyWidget extends StatelessWidget {
   final String _countText;
+//  final String _countTextD;
   final String _warningText;
   final String _image;
   DSIMainBodyWidget(this._countText, this._warningText, this._image);
@@ -137,6 +167,12 @@ class DSIMainBodyWidget extends StatelessWidget {
           _countText,
           style: TextStyle(color: Colors.black, fontSize: 16.0),
         ),
+//        SizedBox(height: 8.0),
+//        if (_countTextD.isNotEmpty)
+//        Text(
+//          _countTextD,
+//          style: TextStyle(color: Colors.black, fontSize: 16.0),
+//        ),
         SizedBox(height: 8.0),
         if (_warningText.isNotEmpty)
           Text(
