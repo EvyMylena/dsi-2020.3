@@ -1,3 +1,6 @@
+Link para DOC dos conceitos básico de POO:
+https://docs.google.com/document/d/11TwNLtVGvXig2XATVKvVJsBCwptgLX8iO_OPCbfhdLY/edit?usp=sharing
+
 # flutter_first_app
 
 A new Flutter application.
