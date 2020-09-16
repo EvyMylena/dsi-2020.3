@@ -4,29 +4,73 @@ import 'package:dsi_app/constants.dart';
 import 'package:dsi_app/infra.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:dsi_app/signup.dart';
 
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DsiScaffold(
-      appBar: _buildAppBar(),
-      body: _buildBody(),
+      appBar: AppBar(
+        backgroundColor: Colors.green,
+        automaticallyImplyLeading: true,
+        leading: IconButton(
+          icon: Icon(Icons.menu),
+          color: Colors.white,
+          onPressed: (){
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context)=> HomePage(),
+              ),
+            );
+          },
+        ),
+        title: Text('Home'),
+        actions: <Widget>[
+          Container(
+            padding: EdgeInsets.symmetric(horizontal: 16),
+            child: FlatButton(
+              child: Icon(
+                Icons.search,
+                color: Colors.white,
+              ),
+              onPressed: (){
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context)=> Signup(),
+                    ),
+                );
+              },
+            ),
+          )
+        ],
+      ),
+//      appBar: _buildAppBar(),
+//      body: _buildBody(),
     );
   }
 
-  Widget _buildAppBar() {
-    return AppBar(
-      leading: Icon(Icons.menu),
-      title: Text('Home'),
-      actions: <Widget>[
-        Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16),
-          child: Icon(Icons.search),
-        ),
-        Icon(Icons.more_vert),
-      ],
-    );
-  }
+
+//  Widget _buildAppBar() {
+//    return AppBar(
+//      leading: Icon(Icons.menu),
+//      title: Text('Home'),
+//      actions: <Widget>[
+//        Container(
+//          padding: EdgeInsets.symmetric(horizontal: 16),
+//          child: FlatButton(
+//            child: Icon(
+//              Icons.search,
+//              color: Colors.white,
+//            ),
+//            onPressed: (){
+//            },
+//          ),
+//        ),
+//        Icon(Icons.more_vert),
+//      ],
+//    );
+//  }
 
   Widget _buildBody() {
     return Opacity(
