@@ -21,8 +21,8 @@ class HomePage extends StatelessWidget {
         decoration: BoxDecoration(
           gradient: LinearGradient(
             colors: [
-              Constants.colorGreenBSI3,
-              Constants.colorGreenBSI2,
+              Color(0xfff7ffe8),
+              Color(0xffc2ca94),
             ],
             stops: [0.8, 1.0],
             transform: GradientRotation(pi / 2),

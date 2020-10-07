@@ -50,7 +50,7 @@ class DsiScaffold extends StatelessWidget {
               image: Images.bsiLogo,
               height: 36.0,
               alignment: Alignment.bottomCenter,
-              color: Constants.colorGreenBSI2,
+              color: Color(0xffc2ca94),
             ),
           ),
           Spacer(
@@ -61,7 +61,7 @@ class DsiScaffold extends StatelessWidget {
             style: themeData.textTheme.headline1.copyWith(
               fontSize: 50.0,
               fontWeight: FontWeight.bold,
-              color: Constants.colorGreenBSI3,
+              color: Color(0xfff7ffe8),
             ),
           ),
           Spacer(
@@ -75,7 +75,7 @@ class DsiScaffold extends StatelessWidget {
               textAlign: TextAlign.right,
               style: themeData.textTheme.caption.copyWith(
                 fontSize: 12.0,
-                color: Constants.colorGreenBSI2,
+                color: Color(0xffc2ca94),
               ),
             ),
           ),
@@ -109,11 +109,8 @@ class DsiScaffold extends StatelessWidget {
           ListTile(
             leading: Icon(Icons.school),
             title: Text('Professores'),
-            onTap: () => dsiHelper.showMessage(
-              context: context,
-              message: 'Falta implementar.',
+            onTap: () => dsiHelper.go(context, '/list_professor'),
             ),
-          ),
           Divider(),
           ListTile(
             leading: Icon(Icons.exit_to_app),
