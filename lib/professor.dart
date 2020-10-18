@@ -13,6 +13,15 @@ class Professor extends Pessoa{
 
   Professor({cpf, nome, endereco, this.disciplina, this.siape})
       : super(cpf: cpf, nome: nome, endereco: endereco);
+
+  Professor.fromJson(Map<String, dynamic> json)
+      : siape = json['siape'],
+        super.fromJson(json);
+
+  Map<String, dynamic> toJson() => super.toJson()
+    ..addAll({
+      'siape': siape,
+    });
 }
 
 var professorController = ProfessorController();
@@ -75,11 +84,11 @@ class ListProfessorPageState extends State<ListProfessorPage> {
         color: Colors.red,
         child: Row(
           children: <Widget>[
-            Constants.spaceSmallWidth,
+            Constants.boxSmallWidth,
             Icon(Icons.delete, color: Colors.white),
             Spacer(),
             Icon(Icons.delete, color: Colors.white),
-            Constants.spaceSmallWidth,
+            Constants.boxSmallWidth,
           ],
         ),
       ),
@@ -87,7 +96,7 @@ class ListProfessorPageState extends State<ListProfessorPage> {
         title: Text(professor.nome),
         subtitle: Column(
           children: <Widget>[
-            Text('id. ${professor.id} (NUNCA APRESENTE O ID DE UM REGISTRO!)'),
+            Text('id. ${professor.id}'),
             SizedBox(width: 8.0),
             Text('disc. ${professor.disciplina}'),
             SizedBox(width: 8.0),
@@ -116,48 +125,8 @@ class MaintainProfessorPage extends StatelessWidget {
       },
       body: Wrap(
         alignment: WrapAlignment.center,
-        runSpacing: Constants.spaceSmallHeight.height,
+        runSpacing: Constants.boxSmallHeight.height,
         children: <Widget>[
-          TextFormField(
-            keyboardType: TextInputType.number,
-            decoration: const InputDecoration(labelText: 'CPF*'),
-            validator: (String value) {
-              return value.isEmpty ? 'CPF inválido.' : null;
-            },
-            initialValue: professor.cpf,
-            onSaved: (newValue) => professor.cpf = newValue,
-          ),
-          Constants.spaceSmallHeight,
-          TextFormField(
-            keyboardType: TextInputType.text,
-            decoration: const InputDecoration(labelText: 'Nome*'),
-            validator: (String value) {
-              return value.isEmpty ? 'Nome inválido.' : null;
-            },
-            initialValue: professor.nome,
-            onSaved: (newValue) => professor.nome = newValue,
-          ),
-          Constants.spaceSmallHeight,
-          TextFormField(
-            keyboardType: TextInputType.text,
-            decoration: const InputDecoration(labelText: 'Endereço*'),
-            validator: (String value) {
-              return value.isEmpty ? 'Endereço inválido.' : null;
-            },
-            initialValue: professor.endereco,
-            onSaved: (newValue) => professor.endereco = newValue,
-          ),
-          Constants.spaceSmallHeight,
-          TextFormField(
-            keyboardType: TextInputType.number,
-            decoration: const InputDecoration(labelText: 'Disciplina*'),
-            validator: (String value) {
-              return value.isEmpty ? 'Disciplina inválida.' : null;
-            },
-            initialValue: professor.disciplina,
-            onSaved: (newValue) => professor.disciplina = newValue,
-          ),
-          Constants.spaceSmallHeight,
           TextFormField(
             keyboardType: TextInputType.number,
             decoration: const InputDecoration(labelText: 'Siape*'),
@@ -167,6 +136,46 @@ class MaintainProfessorPage extends StatelessWidget {
             initialValue: professor.siape,
             onSaved: (newValue) => professor.siape = newValue,
           ),
+//          TextFormField(
+//            keyboardType: TextInputType.number,
+//            decoration: const InputDecoration(labelText: 'CPF*'),
+//            validator: (String value) {
+//              return value.isEmpty ? 'CPF inválido.' : null;
+//            },
+//            initialValue: professor.cpf,
+//            onSaved: (newValue) => professor.cpf = newValue,
+//          ),
+//          Constants.boxSmallHeight,
+//          TextFormField(
+//            keyboardType: TextInputType.text,
+//            decoration: const InputDecoration(labelText: 'Nome*'),
+//            validator: (String value) {
+//              return value.isEmpty ? 'Nome inválido.' : null;
+//            },
+//            initialValue: professor.nome,
+//            onSaved: (newValue) => professor.nome = newValue,
+//          ),
+//          Constants.boxSmallHeight,
+//          TextFormField(
+//            keyboardType: TextInputType.text,
+//            decoration: const InputDecoration(labelText: 'Endereço*'),
+//            validator: (String value) {
+//              return value.isEmpty ? 'Endereço inválido.' : null;
+//            },
+//            initialValue: professor.endereco,
+//            onSaved: (newValue) => professor.endereco = newValue,
+//          ),
+//          Constants.boxSmallHeight,
+//          TextFormField(
+//            keyboardType: TextInputType.number,
+//            decoration: const InputDecoration(labelText: 'Disciplina*'),
+//            validator: (String value) {
+//              return value.isEmpty ? 'Disciplina inválida.' : null;
+//            },
+//            initialValue: professor.disciplina,
+//            onSaved: (newValue) => professor.disciplina = newValue,
+//          ),
+//          Constants.boxSmallHeight,
         ],
       ),
     );

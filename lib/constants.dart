@@ -6,7 +6,7 @@ class Constants {
   static const title = 'CRUD App - DSI/BSI/UFRPE';
   static const spaceSmall = 8.0;
   static const spaceMedium = 16.0;
-  static const insetsSmall = EdgeInsets.all(spaceSmall);
+  static const insetsSmall=EdgeInsets.all(spaceSmall);
   static const insetsMedium = EdgeInsets.all(spaceMedium);
   static const boxSmallHeight = SizedBox(height: spaceSmall);
   static const boxSmallWidth = SizedBox(width: spaceSmall);
